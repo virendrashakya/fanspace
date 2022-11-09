@@ -10,15 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_09_122833) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_09_173730) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "accounts", force: :cascade do |t|
+    t.string "username"
+    t.string "slug"
+    t.integer "mobile_number"
+    t.integer "dial_code"
+    t.string "country"
+    t.string "state"
+    t.string "city"
+    t.text "bio"
+    t.string "gender"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "social_accounts", force: :cascade do |t|
+    t.string "social_email"
+    t.string "social_username"
+    t.integer "social_mobile"
+    t.string "social_url"
+    t.boolean "public_profile"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_social_accounts_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
-    t.string "username", default: ""
-    t.integer "mobile_number"
-    t.integer "country_mobile_code"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -40,4 +75,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_122833) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "accounts", "users"
+  add_foreign_key "social_accounts", "users"
 end
