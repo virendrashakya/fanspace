@@ -1,4 +1,4 @@
-<% User.all.each do |user|%>
+<% User.includes(:active_relationships, :passive_relationships).all.each do |user|%>
   <div class="row">
     <div class="col-sm-8">
       <%= user.email%>
