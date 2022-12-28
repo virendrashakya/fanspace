@@ -1,7 +1,6 @@
-class CreateAccounts < ActiveRecord::Migration[7.0]
+class CreateProfiles < ActiveRecord::Migration[7.0]
   def change
-    create_table :accounts do |t|
-      t.string :username
+    create_table :profiles do |t|
       t.string :slug
       t.integer :mobile_number
       t.integer :dial_code
@@ -10,7 +9,7 @@ class CreateAccounts < ActiveRecord::Migration[7.0]
       t.string :city
       t.text :bio
       t.string :gender
-      t.references :user, null: false, foreign_key: true
+      t.references :influencer, null: false, foreign_key: true
 
       t.timestamps
     end

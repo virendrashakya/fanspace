@@ -1,7 +1,8 @@
+<!-- Using this layout for user navigation -->
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Fanspace | Login</title>
+    <title>Fanspace | User</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,11 +11,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-  	<section class="ftco-section">
-      <div class="container">
-        <%= yield %>
-      </div>
-    </section>
+  <body style="background: black;">
+    <%= yield %>
   </body>
 </html>

@@ -12,6 +12,9 @@ Things you may want to cover:
 * Configuration
 
 * Database creation
+on mac os, install postgrsql server
+start service : brew services start postgresql 
+
 
 * Database initialization
 

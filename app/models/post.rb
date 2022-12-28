@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
-  belongs_to :user
-  has_rich_text :content
+  belongs_to :influencer
+
+  has_many_attached :image
+
 end

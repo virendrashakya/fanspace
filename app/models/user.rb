@@ -17,6 +17,7 @@ class User < ApplicationRecord
 
   has_many :followers, through: :passive_relationships, source: :follower
 
+  has_one :account
 
   # Follows a user.
   def follow(other_user)

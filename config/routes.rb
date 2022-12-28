@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+
+  # resources :accounts
+  
   root to: 'home#index'
   get 'home/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -10,14 +13,27 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+  
+  devise_for :influencers, controllers: {
+    sessions: 'influencers/sessions',
+    registrations: 'influencers/registrations'
+  }
 
-  resources :users do
-    member do
-      get :following, :followers
-    end
+  scope module: 'influencers' do
+    resources :posts
+    resource :profile, except: [:new, :create, :destroy]
+    resources :social_accounts
   end
+  # resource :account, except: :delete
 
-  resources :posts
+  # resources :users do
+  #   member do
+  #     get :following, :followers
+  #     resource :account
+  #   end
+  # end
+
+  
 
   resources :relationships,       only: [:create, :destroy]
 end

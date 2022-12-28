@@ -1,0 +1,33 @@
+.wallpaper {
+  box-sizing: border-box;
+  position: relative;
+  min-height: 100vh;
+  margin-bottom: 20px;
+  padding-bottom: 55px;
+  background-image: url('session-image.png');
+  background-repeat: no-repeat;
+  background-color: #000000;
+
+  background-position: 50%;
+
+  background-size: contain;
+}
+
+.sign-in-form {
+  border: 1px solid #f8a5a5;
+  border-radius: 5px;
+  // background: #ef5f83;
+  box-shadow: 0px 0px 16px 2px #e66d6d;
+
+  float: right;
+  margin-right: 40px;
+  padding-top: 30px;
+  position: relative;
+  margin-left: auto;
+  background-color: transparent;
+  width: 450px;
+  max-width: 100%;
+  padding: 12px;
+  top: 22vh;
+  padding: 45px 20px;
+}

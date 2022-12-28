@@ -1,17 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  social_email: MyString
-  social_username: MyString
-  social_mobile: 1
-  social_url: MyString
-  public_profile: false
-  user: one
+  public_url: MyString
+  icon: MyString
+  influencers: one
 
 two:
-  social_email: MyString
-  social_username: MyString
-  social_mobile: 1
-  social_url: MyString
-  public_profile: false
-  user: two
+  public_url: MyString
+  icon: MyString
+  influencers: two
