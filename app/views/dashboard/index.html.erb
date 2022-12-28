@@ -1,0 +1,8 @@
+<% if user_signed_in? %>
+  <%= render 'user_dashboard' %>
+<% elsif influencer_signed_in?  %>
+  <%= render 'influencer_dashboard' %>
+<% else %>
+    <p> Ye kya ho gaya bhai ? </p>
+<% end %>
+

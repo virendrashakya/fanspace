@@ -72,6 +72,6 @@ class Influencers::ProfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def profile_params
-      params.require(:profile).permit(:slug, :bio)
+      params.require(:profile).permit(:avatar, :banner, :bio, :gender)
     end
 end

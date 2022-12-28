@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
 
-  before_action :authenticate_user_or_influencer!
   layout :layout_by_resource
+  before_action :authenticate_user_or_influencer!
 
   def after_sign_in_path_for(resource)
-    home_index_path
+    dashboard_index_path
   end
 
   def after_sign_out_path_for(resource)
@@ -30,14 +30,14 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
   def authenticate_user_or_influencer!
     if user_signed_in?
-      
-      puts ">>>>>>>>>>>>>>>>>>>>>>> user signed ind"
+      authenticate_user!
     elsif influencer_signed_in?
-      puts ">>>>>>>>>>>>>>>>>>>>>>> Influencer signed ind"
+      authenticate_influencer!
     else
-      puts ">>>>>>>>>>>>>>>>>>>>>>> This is an exception"
+      authenticate_user!
     end
   end
 

@@ -1,9 +1,11 @@
-class SocialAccountsController < ApplicationController
+class Influencers::SocialAccountsController < ApplicationController
+  
+  before_action :get_influencer
   before_action :set_social_account, only: %i[ show edit update destroy ]
 
   # GET /social_accounts or /social_accounts.json
   def index
-    @social_accounts = SocialAccount.all
+    @social_accounts = @influencer.social_accounts
   end
 
   # GET /social_accounts/1 or /social_accounts/1.json
@@ -12,7 +14,7 @@ class SocialAccountsController < ApplicationController
 
   # GET /social_accounts/new
   def new
-    @social_account = SocialAccount.new
+    @social_account = @influencer.social_accounts.build
   end
 
   # GET /social_accounts/1/edit
@@ -21,7 +23,7 @@ class SocialAccountsController < ApplicationController
 
   # POST /social_accounts or /social_accounts.json
   def create
-    @social_account = SocialAccount.new(social_account_params)
+    @social_account = @influencer.social_accounts.build(social_account_params)
 
     respond_to do |format|
       if @social_account.save
@@ -59,12 +61,17 @@ class SocialAccountsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+    def get_influencer
+      @influencer = Influencer.find(current_influencer.id)
+    end
+
     def set_social_account
       @social_account = SocialAccount.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def social_account_params
-      params.require(:social_account).permit(:public_url, :icon, :influencer_id)
+      params.require(:social_account).permit(:service_name, :username, :public_url, :icon)
     end
 end

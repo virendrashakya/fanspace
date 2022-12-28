@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   # resources :accounts
   
-  root to: 'home#index'
-  get 'home/index'
+  root to: 'dashboard#index'
+  get 'dashboard/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -24,6 +24,10 @@ Rails.application.routes.draw do
     resource :profile, except: [:new, :create, :destroy]
     resources :social_accounts
   end
+
+  scope module: 'users' do
+    resources :relationships, only: [:create, :destroy]
+  end
   # resource :account, except: :delete
 
   # resources :users do
@@ -35,5 +39,5 @@ Rails.application.routes.draw do
 
   
 
-  resources :relationships,       only: [:create, :destroy]
+  
 end

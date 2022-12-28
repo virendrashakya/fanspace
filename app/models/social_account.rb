@@ -1,3 +1,3 @@
 class SocialAccount < ApplicationRecord
-  belongs_to :influencers
+  belongs_to :influencer
 end

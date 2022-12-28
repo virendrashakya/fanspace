@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_28_095809) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_28_134705) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -67,6 +77,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_28_095809) do
     t.index ["reset_password_token"], name: "index_influencers_on_reset_password_token", unique: true
   end
 
+  create_table "influencers_users", force: :cascade do |t|
+    t.integer "influencer_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["influencer_id", "user_id"], name: "index_influencers_users_on_influencer_id_and_user_id", unique: true
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -93,17 +111,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_28_095809) do
     t.index ["influencer_id"], name: "index_profiles_on_influencer_id"
   end
 
-  create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id"
-    t.integer "followed_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["followed_id"], name: "index_relationships_on_followed_id"
-    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-    t.index ["follower_id"], name: "index_relationships_on_follower_id"
-  end
-
   create_table "social_accounts", force: :cascade do |t|
+    t.string "service_name"
+    t.string "username"
     t.string "public_url"
     t.string "icon"
     t.bigint "influencer_id", null: false

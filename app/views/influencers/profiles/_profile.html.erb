@@ -1,6 +1,18 @@
 <div id="<%= dom_id profile %>">
  
   <p>
+    <strong>Avatar:</strong>
+    <% if profile.avatar.attached? %>
+      <%= image_tag url_for(profile.avatar), :class => "illustrations" %>
+    <% end %>
+  </p>
+  <p>
+    <strong>Banner:</strong>
+    <% if profile.banner.attached? %>
+      <%= image_tag url_for(profile.banner), :class => "illustrations" %>
+    <% end %>
+  </p>
+  <p>
     <strong>Bio:</strong>
     <%= profile.bio %>
   </p>

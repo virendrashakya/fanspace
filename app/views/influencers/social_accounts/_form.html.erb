@@ -12,6 +12,16 @@
   <% end %>
 
   <div>
+    <%= form.label :service_name, style: "display: block" %>
+    <%= form.text_field :service_name %>
+  </div>
+  
+  <div>
+    <%= form.label :username, style: "display: block" %>
+    <%= form.text_field :username %>
+  </div>
+
+  <div>
     <%= form.label :public_url, style: "display: block" %>
     <%= form.text_field :public_url %>
   </div>
@@ -19,11 +29,6 @@
   <div>
     <%= form.label :icon, style: "display: block" %>
     <%= form.text_field :icon %>
-  </div>
-
-  <div>
-    <%= form.label :influencer_id, style: "display: block" %>
-    <%= form.text_field :influencer_id %>
   </div>
 
   <div>

@@ -10,3 +10,7 @@ require 'faker'
 100.times do |i|
   User.new(email: Faker::Internet.email, password: Faker::Internet.password).save!
 end
+
+100.times do |i|
+  Influencer.new(email: Faker::Internet.email, password: Faker::Internet.password).save!
+end
