@@ -5,16 +5,14 @@
     <title>Fanspace</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
+    <%= favicon_link_tag asset_path('fav.png') %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "devise", "data-turbo-track": "reload" %>
+    <%= javascript_tag "devise" %>
   </head>
 
   <body>
-    <!--Main content-->
-    <main class="container" style="min-height: 500px;">
-      <%= yield %>
-    </main>
+    <%= yield %>
   </body>
 </html>
